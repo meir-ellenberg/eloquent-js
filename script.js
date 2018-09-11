@@ -61,3 +61,81 @@ function sum(numbers) {
 }
 
 // Every And Then Some
+function every(arr, predicate) {
+    for(let item of arr) {
+        if(!predicate(item)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function some(arr, predicate) {
+    for(let item of arr) {
+        if(predicate(item)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Build a table
+
+var MOUNTAINS = [
+    {name: "Kilimanjaro", height: 5895, country: "Tanzania"},
+    {name: "Everest", height: 8848, country: "Nepal"},
+    {name: "Mount Fuji", height: 3776, country: "Japan"},
+    {name: "Mont Blanc", height: 4808, country: "Italy/France"},
+    {name: "Vaalserberg", height: 323, country: "Netherlands"},
+    {name: "Denali", height: 6168, country: "United States"},
+    {name: "Popocatepetl", height: 5465, country: "Mexico"}
+  ];
+
+function buildTable(data) {
+    const body = document.querySelector(`body`);
+    const tableElement = document.createElement("table");
+    body.appendChild(tableElement);
+    
+    let heading = 0; // if th applied heading = 1 else heading = 0
+
+    for(let element of data) {
+        // check if heading is applied
+        if(!heading) {
+            // creates new tr element and append it to table
+            const trElement = document.createElement("tr");
+            tableElement.appendChild(trElement);
+            // make an array of keys with Object.keys function
+            const keysArr = keys(element);
+            for(let key of keysArr) {
+                // creates new th element
+                const thElement = document.createElement("th");
+                // creates new text node
+                const node = document.createTextNode(key);
+                // append text node to th
+                thElement.appendChild(node);
+                // append th to tr
+                trElement.appendChild(thElement);
+            }
+            heading = 1; // heading was applied
+        }
+        // creates new tr element and append it to table
+        const trElement = document.createElement("tr");
+        tableElement.appendChild(trElement);
+
+        // make an array of values with Object.values function
+        const valuesArr = values(element);
+        for(let value of valuesArr) {
+            const tdElement = document.createElement("td");
+            // right align cells containing only numbers
+            if(!isNaN(value)) {
+                tdElement.style.textAlign = "right";
+            }
+            const node = document.createTextNode(value);
+            tdElement.appendChild(node);
+            trElement.appendChild(tdElement);
+        }
+    }
+}
+
+// Censored Keyboard
+let field = document.querySelector("input");
