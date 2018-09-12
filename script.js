@@ -19,25 +19,21 @@ function fizzBuzz() {
 // Bean Counting
 function countBs(str) {
     let counter = 0;
-
     for(let i = 0; i < str.length; i++) {
         if(str.charAt(i) === 'B') {
             counter++;
         }
     }
-
     console.log(counter);
 }
 
 function countChar(str, chr) {
     let counter = 0;
-
     for(let i = 0; i < str.length; i++) {
         if(str.charAt(i) === chr) {
             counter++;
         }
     }
-
     console.log(counter);
 }
 
@@ -80,7 +76,6 @@ function some(arr, predicate) {
 }
 
 // Build a table
-
 var MOUNTAINS = [
     {name: "Kilimanjaro", height: 5895, country: "Tanzania"},
     {name: "Everest", height: 8848, country: "Nepal"},
@@ -92,11 +87,11 @@ var MOUNTAINS = [
   ];
 
 function buildTable(data) {
-    const body = document.querySelector(`body`);
+    const body = document.querySelector("body");
     const tableElement = document.createElement("table");
     body.appendChild(tableElement);
     
-    let heading = 0; // if th applied heading = 1 else heading = 0
+    let heading = 0; // if th applied, heading = 1 else heading = 0
 
     for(let element of data) {
         // check if heading is applied
